@@ -16,45 +16,49 @@
     <p class="text-light mb-0 p-2 fs-9"> Contactanos +569 5555 0000</p>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-2" id="menu">
-    <div class="container-fluid">
-        <a href="index.html"><img class="logo" src="{% static 'img/logo.png'%}"></a> 
-        <a class="navbar-brand" href="index.html">
-            <span class="text-primary fs-5 fw-bold"> 40'Free </span>
-        </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
-          </li>
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link alert-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              Productos
+        <div class="container-fluid">
+            <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/logo.png' %}"></a>
+            <a class="navbar-brand" href="#">
+                <span class="text-primary fs-5 fw-bold"> 40'Free </span>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item">Catalogo</a>
-              <a class="dropdown-item" href="forms_clientes.html">Personalizados</a>
-              </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="aboutus.html">Quienes somos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="registro.html">Registro </a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Estoy buscando..." aria-label="Search">
-          <button class="btn btn-primary btn-primary-outline-success" type="button">Buscar</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+                <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'index' %}">Inicio</a>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link alert-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  Productos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item">Catalogo</a>
+                  <a class="dropdown-item" href="{% url 'forms_clientes' %}" >Personalizados</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'aboutus' %}">Quienes somos</a>
+              </li>
+    
+    
+    
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'registro' %}">Registro </a>
+              </li>
+    
+    
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Estoy buscando..." aria-label="Search">
+              <button class="btn btn-primary btn-primary-outline-success" type="button">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
   <div class="encabezadoC">
     <h3 class="tituloC"> Catalogo de Productos</h3>
     <button id="checkout" class="button-checkout" onclick="pay()">Carrito</button>

@@ -28,13 +28,35 @@ def form_enviado(request):
 def consultar_registro(request):
     return render(request, 'app/consultar_registro.html')
 
+def consultar_datos(request):
+    return render(request, 'app/consultar_datos.html')
+    
+
 
 def mostrar(request):
-    clientes= Cliente.objects.all()
+    datoscliente= DatosCliente.objects.all()
     datos={
-        'clientes': clientes
+        'datoscliente': datoscliente
     }
     return render(request, 'app/mostrar.html',datos)
+
+def form_mod_registro(request, id):
+    datoscliente = DatosCliente.objects.get(rutreg=id)
+    datos ={
+        'form': DatosClienteForm(instance=datoscliente)
+    }
+    if request.method=='POST':
+        formulario = DatosClienteForm(data = request.POST, instance=datoscliente)
+        if formulario.is_valid: 
+            formulario.save()
+            return redirect('mostrar')
+    return render(request, 'app/form_mod_registro.html', datos)
+
+def form_del_registro(request, id):
+    datoscliente = DatosCliente.objects.get(rutreg=id)
+    datoscliente.delete()
+    return redirect('mostrar')
+
 
 def forms_clientes(request):
     if request.method=='POST':
@@ -47,32 +69,6 @@ def forms_clientes(request):
     return render(request, 'app/forms_clientes.html', {'cliente_form': cliente_form})
 
 
-def form_mod_cliente(request, id):
-    cliente = Cliente.objects.get(rut=id)
-    datos ={
-        'form': ClienteForm(instance=cliente)
-    }
-    if request.method=='POST':
-        formulario = ClienteForm(data = request.POST, instance=cliente)
-        if formulario.is_valid: 
-            formulario.save()
-            return redirect('mostrar')
-    return render(request, 'app/form_mod_cliente.html', datos)
-
-
-def form_del_cliente(request, id):
-    cliente = Cliente.objects.get(rut=id)
-    cliente.delete()
-    return redirect('mostrar')
-
-
-
-def mostrar(request):
-    clientes= DatosCliente.objects.all()
-    datos={
-        'datos del cliente': clientes
-    }
-    return render(request, 'app/mostrar.html',datos)
 
 def registro(request):
     if request.method=='POST':
@@ -85,23 +81,26 @@ def registro(request):
     return render(request, 'app/registro.html', {'datoscliente_form': datoscliente_form})
 
 
-
-
-def form_mod_registro(request,id):
-    clientes= DatosCliente.objects.get(rut=id)
-
-    datos= {
-        'form': DatosClienteForm(instance=clientes),
-        'Persona':clientes
-        
+def consultar_datos(request):
+    datos={
     }
-    return render(request, 'core/form_mod_registro.html',datos)
+    rutreg=request.POST['rutreg']
+    clientes=DatosCliente.objects.filter(rutreg=rutreg)
+    if clientes:
+        datos['mensaje']= "Usuario encontrado correctamente"
+        Cliente=DatosCliente.objects.get(rutreg=rutreg)
+        datos['Persona']=Cliente
+        return render (request, 'app/consultar_datos.html',datos)
+    else:
+        datos['mensaje'] = "Usuario no encontrado"
+        return render (request, 'app/consultar_datos.html',datos)
 
 
-def form_del_cliente(request, id):
-    cliente = DatosCliente.objects.get(rut=id)
-    cliente.delete()
-    return redirect('mostrar')
+
+
+
+
+
 
 
 

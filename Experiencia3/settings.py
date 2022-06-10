@@ -37,11 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'app',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,9 +69,7 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/'
 
-LOGOUT_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'Experiencia3.wsgi.application'
 
