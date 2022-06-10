@@ -142,7 +142,33 @@
                     <div class="form-group">
                         {{datoscliente_form.nombre.label}}
                         {{datoscliente_form.nombre}}
-                    "btn btn-primary" id="limpiar" value="Limpiar">
+                    </div>
+                    <br>
+                    
+                    <div class="form-group">
+                        {{datoscliente_form.apellidos.label}}
+                        {{datoscliente_form.apellidos}}
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        {{datoscliente_form.correo.label}}
+                        {{datoscliente_form.correo}}
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        {{datoscliente_form.telefono.label}}
+                        {{datoscliente_form.telefono}}
+                    </div>
+                    <br>
+
+                    <br>
+                     <br><br>
+                    <div class="row">
+                        <div class="col-md">
+                            <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
+                            <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
                             <a href="{% url 'mostrar' %}" class="btn btn-dark">Buscar un registro</a>
                         </div>
                     </div>
